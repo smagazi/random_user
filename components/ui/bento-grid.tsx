@@ -1,5 +1,5 @@
 import { cn } from "@/utils/cn";
-import Image from 'next/image'
+import Image from "next/image";
 
 export const BentoGrid = ({
   className,
@@ -12,7 +12,7 @@ export const BentoGrid = ({
     <div
       className={cn(
         "grid md:auto-rows-[18rem] grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto ",
-        className
+        className,
       )}
     >
       {children}
@@ -39,7 +39,7 @@ export const BentoGridItem = ({
     <div
       className={cn(
         "row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-between flex flex-col space-y-4",
-        className
+        className,
       )}
     >
       {header}
@@ -48,12 +48,8 @@ export const BentoGridItem = ({
         <div className="font-sans font-bold text-neutral-600 dark:text-neutral-200 mb-2 mt-2">
           {title}
         </div>
-        <div> 
-            <Image  src={image} 
-                    width={500}
-                    height={500}
-                    alt="Picture"> 
-            </Image> 
+        <div>
+          <Image src={image} width={500} height={500} alt="Picture"></Image>
         </div>
         <div className="font-sans font-normal text-neutral-600 text-xs dark:text-neutral-300">
           {description}
