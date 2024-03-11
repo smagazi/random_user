@@ -60,7 +60,7 @@ export default function UserCard() {
     useEffect(() => {    
     const fetchUserInfo = async () => {
       const resp = await fetch(
-        "https://randomuser.me/api/?results=2https://randomuser.me/api/?results=2",
+        "https://randomuser.me/api/?results=2https://randomuser.me/api/?results=4",
       );
       if (!resp.ok) {
         throw new Error("Unable to fetch data");
