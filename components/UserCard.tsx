@@ -53,7 +53,8 @@ interface Info {
 }
 
 export default function UserCard() {
-  const [info, setInfo] = useState<Info>();
+    const [toggle, setToggle] = useState(false) //variables for toggling the secret info on and off
+    const [info, setInfo] = useState<Info>()
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -77,8 +78,14 @@ export default function UserCard() {
   }, []);
 
   if (!info) {
-    return <div>Loading...</div>;
-  } else if (info) {
+    return (
+    <div>
+    <br></br>
+    <div className="object-center text-lg">Loading...</div>
+    </div>
+    )
+  } 
+  else if (info) {
     return (
       // supposed to return a card component with the formatted random user info back to the main page!
       //for some reason, this functionality is not working. I'm trying to determine whether the problem is in the main page or in this UserCard component...
