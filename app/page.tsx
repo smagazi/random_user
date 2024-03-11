@@ -11,8 +11,10 @@ export default async function Home() {
   console.log(info)
   return (
     <main>
+      <div className="grid grid-cols-2 gap-4">
       <UserCard/>
       <UserCard/>
+      </div>
     </main>
   );
 }

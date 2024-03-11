@@ -89,13 +89,15 @@ export default function UserCard() {
           </CardTitle>
 
           <CardContent>
-            <div className="grid grid-cols-2 gap-4">
+            <div>
               <div>
                 Age: {info.dob.age}
+                <br></br>
                 Gender: {info.gender}
+                <br></br>
                 Location: {info.location.city}, {info.location.state}
               </div>
-              <div>
+              <div className="object-right">
                 <Image
                   src={info.picture.large}
                   width={250}
