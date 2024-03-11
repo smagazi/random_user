@@ -1,9 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 //defining interface with desired data from RandomUserAPI.
 interface Info {
@@ -53,20 +53,19 @@ interface Info {
 }
 
 export default function UserCard() {
-  const [toggleInfo, setToggleInfo] = useState(false);
   const [info, setInfo] = useState<Info>();
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-      const resp = await fetch("https://randomprofileapi.com/api/?results=2");
+      const resp = await fetch("https://randomuser.me/api/?results=2https://randomuser.me/api/?results=2");
       if (!resp.ok) {
-        throw new Error("Could not fetch data")
+        throw new Error("Unable to fetch data")
       }
 
       const userData = await resp.json();
 
       if (!userData) {
-        throw new Error("Failed to fetch data");
+        throw new Error("Unable to fetch data");
       }
 
       setInfo(userData.results[0]);
@@ -78,8 +77,9 @@ export default function UserCard() {
   if (!info) {
     return <div>Loading...</div>;
   }
-
-    return (
+  else if (info) {
+    return ( // supposed to return a card component with the formatted random user info back to the main page!
+    //for some reason, this functionality is not working. I'm trying to determine whether the problem is in the main page or in this UserCard component...
       <Card>
         <CardHeader>
           <CardTitle>
@@ -108,10 +108,11 @@ export default function UserCard() {
           </CardContent>
           <Button asChild>
             <Link href="/secret-user-data">
-              Click Here For {info.name.first}&apos;s Secret Information!{" "}
+              Click Here For {info.name.first}&apos;s Secret Information!
             </Link>
           </Button>
         </CardHeader>
       </Card>
     );
+  }
 }
