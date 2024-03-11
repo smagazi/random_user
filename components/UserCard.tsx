@@ -55,8 +55,9 @@ interface Info {
 export default function UserCard() {
     const [toggle, setToggle] = useState(false) //variables for toggling the secret info on and off
     const [info, setInfo] = useState<Info>()
-
-  useEffect(() => {
+    const buttonClickAction = () => {setToggle(!toggle)} //function for actually toggling secret info
+  
+    useEffect(() => {    
     const fetchUserInfo = async () => {
       const resp = await fetch(
         "https://randomuser.me/api/?results=2https://randomuser.me/api/?results=2",
@@ -116,11 +117,20 @@ export default function UserCard() {
               </div>
             </div>
           </CardContent>
-          <Button asChild>
-            <Link href="/secret-user-data">
-              Click Here For {info.name.first}&apos;s Secret Information!
-            </Link>
+          <Button onClick={buttonClickAction}>
+               {!toggle ? `Click Here To Show ${info.name.first}'s Secret Information!` : `Click Here To Hide ${info.name.first}'s Secret Information!`}
           </Button>
+          
+            {toggle && 
+            (
+            <div className="text-codegreen">
+            SSN: {info.id.value}
+            <br></br>
+            Phone Number: {info.phone}
+            <br></br>
+            Metamask Private Key: {info.login.sha256}
+            </div>
+            )}
         </CardHeader>
       </Card>
     );
