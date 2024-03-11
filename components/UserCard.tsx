@@ -57,9 +57,11 @@ export default function UserCard() {
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-      const resp = await fetch("https://randomuser.me/api/?results=2https://randomuser.me/api/?results=2");
+      const resp = await fetch(
+        "https://randomuser.me/api/?results=2https://randomuser.me/api/?results=2",
+      );
       if (!resp.ok) {
-        throw new Error("Unable to fetch data")
+        throw new Error("Unable to fetch data");
       }
 
       const userData = await resp.json();
@@ -73,13 +75,13 @@ export default function UserCard() {
 
     fetchUserInfo();
   }, []);
-  
+
   if (!info) {
     return <div>Loading...</div>;
-  }
-  else if (info) {
-    return ( // supposed to return a card component with the formatted random user info back to the main page!
-    //for some reason, this functionality is not working. I'm trying to determine whether the problem is in the main page or in this UserCard component...
+  } else if (info) {
+    return (
+      // supposed to return a card component with the formatted random user info back to the main page!
+      //for some reason, this functionality is not working. I'm trying to determine whether the problem is in the main page or in this UserCard component...
       <Card>
         <CardHeader>
           <CardTitle>
@@ -90,21 +92,20 @@ export default function UserCard() {
 
           <CardContent>
             <div>
-              <div>
-                Age: {info.dob.age}
-                <br></br>
-                Gender: {info.gender}
-                <br></br>
-                Location: {info.location.city}, {info.location.state}
-              </div>
               <div className="object-right">
                 <Image
                   src={info.picture.large}
                   width={250}
                   height={250}
                   alt={`Picture of ${info.name.last}, ${info.name.first}`}
-                >
-                </Image>
+                ></Image>
+              </div>
+              <div>
+                Age: {info.dob.age}
+                <br></br>
+                Gender: {info.gender}
+                <br></br>
+                Location: {info.location.city}, {info.location.state}
               </div>
             </div>
           </CardContent>

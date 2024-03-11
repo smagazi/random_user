@@ -8,14 +8,13 @@ async function getInfo() {
 
 export default async function Home() {
   const info = await getInfo();
-  console.log(info)
+  console.log(info);
   return (
     <main>
       <div className="grid grid-cols-2 gap-4">
-      <UserCard/>
-      <UserCard/>
+        <UserCard />
+        <UserCard />
       </div>
     </main>
   );
 }
-
